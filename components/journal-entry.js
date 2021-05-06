@@ -71,8 +71,16 @@ class JournalEntry extends HTMLElement {
     /* 
      * TODO: set the entry title, date, and content fields in this component
      */
-    
+
     // CODE GOES HERE
+    const title = this.shadowRoot.querySelector('.entry-title');
+    title.innerHTML = entry.title;
+
+    const date = this.shadowRoot.querySelector('.entry-date');
+    date.innerHTML = entry.date;
+
+    const content = this.shadowRoot.querySelector('.entry-content');
+    content.innerHTML = entry.content;    
 
     if (entry.image) {
       let entryImage;
@@ -84,11 +92,12 @@ class JournalEntry extends HTMLElement {
        */
 
       // CODE GOES HERE vvv
-
-
-
-
-
+      entryImage = document.createElement('img');
+      entryImage.setAttribute('class', 'entry-image');
+      entryImage.setAttribute('src', entry.image.src);
+      entryImage.setAttribute('alt', entry.image.alt);
+      const article = this.shadowRoot.querySelector('.entry');
+      article.appendChild(entryImage);
       // CODE GOES HERE ^^^
 
       /* ------------- do not edit this code, it is for your debugging purposes ------------- */
@@ -110,12 +119,12 @@ class JournalEntry extends HTMLElement {
        */
 
       // CODE GOES HERE vvv
-
-
-
-
-
-
+      entryAudio = document.createElement('audio');
+      entryAudio.className = 'entry-audio';
+      entryAudio.src = entry.audio;
+      entryAudio.controls = "controls";
+      const article = this.shadowRoot.querySelector('.entry');
+      article.appendChild(entryAudio);
       // CODE GOES HERE ^^^
       
 
